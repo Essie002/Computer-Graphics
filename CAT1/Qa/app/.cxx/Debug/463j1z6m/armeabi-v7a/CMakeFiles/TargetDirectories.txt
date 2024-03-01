@@ -1,0 +1,3 @@
+C:/Users/USER/AndroidStudioProjects/HelloVK/app/.cxx/Debug/463j1z6m/armeabi-v7a/CMakeFiles/hellovkjni.dir
+C:/Users/USER/AndroidStudioProjects/HelloVK/app/.cxx/Debug/463j1z6m/armeabi-v7a/CMakeFiles/edit_cache.dir
+C:/Users/USER/AndroidStudioProjects/HelloVK/app/.cxx/Debug/463j1z6m/armeabi-v7a/CMakeFiles/rebuild_cache.dir

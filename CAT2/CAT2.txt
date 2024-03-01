@@ -1,0 +1,627 @@
+QUESTION 1 (a)
+Midpoint
+
+#include <GL/glut.h>
+#include <cmath>
+
+void drawCircle(int centerX, int centerY, int radius) {
+    glColor3f(1.0f, 0.0f, 0.0f); // Set color to red
+    glBegin(GL_POLYGON); // Begin drawing filled polygon
+    int numSegments = 100;
+    for (int i = 0; i < numSegments; i++) {
+        float theta = 2.0f * 3.1415926f * float(i) / float(numSegments);
+        float x = radius * cosf(theta);
+        float y = radius * sinf(theta);
+        glVertex2f(centerX + x, centerY + y); // Plot points
+    }
+    glEnd(); // End drawing
+    glFlush(); // Flush drawing commands
+}
+
+void display() {
+    glClear(GL_COLOR_BUFFER_BIT); // Clear color buffer
+    drawCircle(3, 3, 4); // Draw circle centered at (3,3) with radius 4
+}
+
+void init() {
+    glClearColor(1.0, 1.0, 1.0, 0.0); // Set clear color to white
+    glMatrixMode(GL_PROJECTION);
+    gluOrtho2D(0, 6, 0, 6); // Set the viewing area
+}
+
+int main(int argc, char** argv) {
+    glutInit(&argc, argv); // Initialize GLUT
+    glutInitDisplayMode(GLUT_SINGLE | GLUT_RGB); // Set display mode
+    glutInitWindowSize(600, 600); // Set window size to a square (400x400)
+    glutInitWindowPosition(100, 100); // Set window position
+    glutCreateWindow("Midpoint Circle Drawing Algorithm"); // Create window with title
+    init(); // Initialize OpenGL parameters
+    glutDisplayFunc(display); // Set display function
+    glutMainLoop(); // Enter main event loop
+    return 0;
+}
+
+
+Bresenham's
+
+#include <GL/glut.h>
+#include <cmath>
+
+void drawCircle(int centerX, int centerY, int radius) {
+    glColor3f(1.0f, 0.0f, 0.0f); // Set color to red
+    glBegin(GL_POLYGON); // Fill the circle
+    int numSegments = 100;
+    for (int i = 0; i < numSegments; i++) {
+        float theta = 2.0f * 3.1415926f * float(i) / float(numSegments);
+        float x = radius * cosf(theta);
+        float y = radius * sinf(theta);
+        glVertex2f(centerX + x, centerY + y);
+    }
+    glEnd();
+    glFlush();
+}
+
+void display() {
+    glClear(GL_COLOR_BUFFER_BIT);
+    drawCircle(3, 3, 4); // Center 3,3 radius 4
+}
+
+void init() {
+    glClearColor(1.0, 1.0, 1.0, 0.0); // Set clear color to white
+    glMatrixMode(GL_PROJECTION);
+    gluOrtho2D(0, 10, 0, 10); // Set the viewing area
+}
+
+int main(int argc, char** argv) {
+    glutInit(&argc, argv);
+    glutInitDisplayMode(GLUT_SINGLE | GLUT_RGB);
+    glutInitWindowSize(500, 500); // Set window size
+    glutInitWindowPosition(100, 100); // Set window position
+    glutCreateWindow("Bresenham Circle Algorithm");
+    init();
+    glutDisplayFunc(display);
+    glutMainLoop();
+    return 0;
+}
+
+
+QUESTION 1 (b)
+
+Midpoint
+
+#include <GL/glut.h>
+#include <cmath>
+
+void drawCircle(int centerX, int centerY, int radius) {
+    glColor3f(1.0f, 0.0f, 0.0f); // Set color to red
+    glBegin(GL_POLYGON); // Begin drawing filled polygon
+    int numSegments = 100;
+    for (int i = 0; i < numSegments; i++) {
+        float theta = 2.0f * 3.1415926f * float(i) / float(numSegments);
+        float x = radius * cosf(theta);
+        float y = radius * sinf(theta);
+        glVertex2f(centerX + x, centerY + y); // Plot points
+    }
+    glEnd(); // End drawing
+    glFlush(); // Flush drawing commands
+}
+
+void drawDiameter(int centerX, int centerY, int radius) {
+    glColor3f(0.0f, 0.0f, 0.0f); // Set color to black
+    glBegin(GL_LINES);
+    glVertex2f(centerX - radius, centerY); // Start point
+    glVertex2f(centerX + radius, centerY); // End point
+    glEnd();
+    glFlush(); // Flush drawing commands
+}
+
+void display() {
+    glClear(GL_COLOR_BUFFER_BIT); // Clear color buffer
+    drawCircle(3, 3, 4); // Draw circle centered at (3,3) with radius 4
+    drawDiameter(3, 3, 4); // Draw diameter
+}
+
+void init() {
+    glClearColor(1.0, 1.0, 1.0, 0.0); // Set clear color to white
+    glMatrixMode(GL_PROJECTION);
+    gluOrtho2D(0, 6, 0, 6); // Set the viewing area
+}
+
+int main(int argc, char** argv) {
+    glutInit(&argc, argv); // Initialize GLUT
+    glutInitDisplayMode(GLUT_SINGLE | GLUT_RGB); // Set display mode
+    glutInitWindowSize(600, 600); // Set window size to a square (400x400)
+    glutInitWindowPosition(100, 100); // Set window position
+    glutCreateWindow("Midpoint Circle Drawing Algorithm"); // Create window with title
+    init(); // Initialize OpenGL parameters
+    glutDisplayFunc(display); // Set display function
+    glutMainLoop(); // Enter main event loop
+    return 0;
+}
+
+
+Bresenham's
+
+#include <GL/glut.h>
+#include <cmath>
+
+void drawCircle(int centerX, int centerY, int radius) {
+    glColor3f(1.0f, 0.0f, 0.0f); // Set color to red
+    glBegin(GL_POLYGON); // Fill the circle
+    int numSegments = 100;
+    for (int i = 0; i < numSegments; i++) {
+        float theta = 2.0f * 3.1415926f * float(i) / float(numSegments);
+        float x = radius * cosf(theta);
+        float y = radius * sinf(theta);
+        glVertex2f(centerX + x, centerY + y);
+    }
+    glEnd();
+    glFlush();
+}
+
+void drawDiameter(int centerX, int centerY, int radius) {
+    glColor3f(0.0f, 0.0f, 0.0f); // Set color to black
+    glBegin(GL_LINES);
+    glVertex2f(centerX - radius, centerY); // Start point
+    glVertex2f(centerX + radius, centerY); // End point
+    glEnd();
+    glFlush(); // Flush drawing commands
+}
+
+void display() {
+    glClear(GL_COLOR_BUFFER_BIT);
+    drawCircle(3, 3, 4); // Center 3,3 radius 4
+    drawDiameter(3, 3, 4); // Draw diameter
+}
+
+void init() {
+    glClearColor(1.0, 1.0, 1.0, 0.0); // Set clear color to white
+    glMatrixMode(GL_PROJECTION);
+    gluOrtho2D(0, 10, 0, 10); // Set the viewing area
+}
+
+int main(int argc, char** argv) {
+    glutInit(&argc, argv);
+    glutInitDisplayMode(GLUT_SINGLE | GLUT_RGB);
+    glutInitWindowSize(500, 500); // Set window size
+    glutInitWindowPosition(100, 100); // Set window position
+    glutCreateWindow("Bresenham Circle Algorithm");
+    init();
+    glutDisplayFunc(display);
+    glutMainLoop();
+    return 0;
+}
+
+
+QUESTION 2 
+
+Midpoint
+
+#include <GL/glut.h>
+#include <iostream>
+
+int width = 800;
+int height = 600;
+
+void plot(int x, int y) {
+    glVertex2i(x, y);
+    glVertex2i(-x, y);
+    glVertex2i(x, -y);
+    glVertex2i(-x, -y);
+}
+
+void drawEllipse() {
+    int rx = width / 2;
+    int ry = height / 2;
+    int rx2 = rx * rx;
+    int ry2 = ry * ry;
+    int twoRx2 = 2 * rx2;
+    int twoRy2 = 2 * ry2;
+    int p;
+    int x = 0;
+    int y = ry;
+    int px = 0;
+    int py = twoRx2 * y;
+
+    glBegin(GL_POLYGON); // Use GL_POLYGON to fill the ellipse
+    // Region 1
+    p = ry2 - (rx2 * ry) + (0.25 * rx2);
+    while (px < py) {
+        x++;
+        px += twoRy2;
+        if (p < 0)
+            p += ry2 + px;
+        else {
+            y--;
+            py -= twoRx2;
+            p += ry2 + px - py;
+        }
+        plot(x, y);
+    }
+
+    // Region 2
+    p = ry2 * (x + 0.5) * (x + 0.5) + rx2 * (y - 1) * (y - 1) - rx2 * ry2;
+    while (y > 0) {
+        y--;
+        py -= twoRx2;
+        if (p > 0)
+            p += rx2 - py;
+        else {
+            x++;
+            px += twoRy2;
+            p += rx2 - py + px;
+        }
+        plot(x, y);
+    }
+    glEnd();
+}
+
+void display() {
+    glClear(GL_COLOR_BUFFER_BIT);
+    glColor3f(0.0, 1.0, 0.0); // Green color
+    drawEllipse();
+    glFlush();
+}
+
+void reshape(int w, int h) {
+    glViewport(0, 0, w, h);
+    glMatrixMode(GL_PROJECTION);
+    glLoadIdentity();
+    gluOrtho2D(-w / 2, w / 2, -h / 2, h / 2);
+    glMatrixMode(GL_MODELVIEW);
+    glLoadIdentity();
+    width = w;
+    height = h;
+}
+
+int main(int argc, char** argv) {
+    glutInit(&argc, argv);
+    glutInitDisplayMode(GLUT_SINGLE | GLUT_RGB);
+    glutInitWindowSize(width, height);
+    glutCreateWindow("Midpoint Ellipse Drawing Algorithm");
+    glutDisplayFunc(display);
+    glutReshapeFunc(reshape);
+    glClearColor(0.0, 0.0, 0.0, 0.0);
+    glutMainLoop();
+    return 0;
+}
+
+
+Bresenham's
+
+#include <GL/glut.h>
+#include <iostream>
+
+int width = 800;
+int height = 600;
+
+void plot(int x, int y) {
+    glVertex2i(x, y);
+    glVertex2i(-x, y);
+    glVertex2i(x, -y);
+    glVertex2i(-x, -y);
+}
+
+void drawEllipse() {
+    int rx = width / 2;
+    int ry = height / 2;
+    int rx2 = rx * rx;
+    int ry2 = ry * ry;
+    int twoRx2 = 2 * rx2;
+    int twoRy2 = 2 * ry2;
+    int p;
+    int x = 0;
+    int y = ry;
+    int px = 0;
+    int py = twoRx2 * y;
+
+    glBegin(GL_POLYGON); // Use GL_POLYGON to fill the ellipse
+    // Region 1
+    p = ry2 - rx2 * ry + rx2 / 4;
+    while (px < py) {
+        x++;
+        px += twoRy2;
+        if (p < 0)
+            p += ry2 + px;
+        else {
+            y--;
+            py -= twoRx2;
+            p += ry2 + px - py;
+        }
+        plot(x, y);
+    }
+
+    // Region 2
+    p = ry2 * (x + 0.5) * (x + 0.5) + rx2 * (y - 1) * (y - 1) - rx2 * ry2;
+    while (y > 0) {
+        y--;
+        py -= twoRx2;
+        if (p > 0)
+            p += rx2 - py;
+        else {
+            x++;
+            px += twoRy2;
+            p += rx2 - py + px;
+        }
+        plot(x, y);
+    }
+    glEnd();
+}
+
+void display() {
+    glClear(GL_COLOR_BUFFER_BIT);
+    glColor3f(0.0, 1.0, 0.0); // Green color
+    drawEllipse();
+    glFlush();
+}
+
+void reshape(int w, int h) {
+    glViewport(0, 0, w, h);
+    glMatrixMode(GL_PROJECTION);
+    glLoadIdentity();
+    gluOrtho2D(-w / 2, w / 2, -h / 2, h / 2);
+    glMatrixMode(GL_MODELVIEW);
+    glLoadIdentity();
+    width = w;
+    height = h;
+}
+
+int main(int argc, char** argv) {
+    glutInit(&argc, argv);
+    glutInitDisplayMode(GLUT_SINGLE | GLUT_RGB);
+    glutInitWindowSize(width, height);
+    glutCreateWindow("Bresenham's Ellipse Drawing Algorithm");
+    glutDisplayFunc(display);
+    glutReshapeFunc(reshape);
+    glClearColor(0.0, 0.0, 0.0, 0.0);
+    glutMainLoop();
+    return 0;
+}
+
+QUESTION 3
+
+(1)
+#include <GL/glut.h>
+
+void display() {
+    glClear(GL_COLOR_BUFFER_BIT);
+
+    // Set color to blue
+    glColor3f(0.0, 0.0, 1.0);
+
+    // Begin drawing the filled square
+    glBegin(GL_POLYGON);
+    glVertex2f(-3.0, 5.0); // Vertex 1
+    glVertex2f(0.0, -4.0); // Vertex 2
+    glVertex2f(3.0, 7.0);  // Vertex 3
+    glVertex2f(6.0, -2.0); // Vertex 4
+    glEnd();
+
+    glFlush();
+}
+
+void init() {
+    glClearColor(1.0, 1.0, 1.0, 0.0); // Set background color to white
+    gluOrtho2D(-10.0, 10.0, -10.0, 10.0); // Set the viewing area
+}
+
+int main(int argc, char** argv) {
+    glutInit(&argc, argv);
+    glutInitDisplayMode(GLUT_SINGLE | GLUT_RGB);
+    glutInitWindowSize(800, 600); // Set window size
+    glutCreateWindow("Square");
+    init();
+    glutDisplayFunc(display);
+    glutMainLoop();
+    return 0;
+}
+
+
+(2)
+#include <GL/glut.h>
+#include <cmath>
+
+void display() {
+    glClear(GL_COLOR_BUFFER_BIT);
+
+    // Set color to blue
+    glColor3f(0.0, 0.0, 1.0);
+
+    // Begin drawing the filled square
+    glBegin(GL_POLYGON);
+    glVertex2f(-3.0, 5.0); // Vertex 1
+    glVertex2f(0.0, -4.0); // Vertex 2
+    glVertex2f(3.0, 7.0);  // Vertex 3
+    glEnd();
+
+    // Draw the shadow square in dotted red lines
+    glEnable(GL_LINE_STIPPLE);
+    glLineStipple(1, 0x00FF); // Dotted pattern
+    glColor3f(1.0, 0.0, 0.0); // Red color
+    glBegin(GL_LINE_LOOP);
+    glVertex2f(-3.0, 5.0); // Vertex 1
+    glVertex2f(0.0, 5.0);  // Vertex 2
+    glVertex2f(0.0, 7.0);  // Vertex 3
+    glVertex2f(-3.0, 7.0); // Vertex 4
+    glEnd();
+    glDisable(GL_LINE_STIPPLE);
+
+    glFlush();
+}
+
+void rotateAndDisplay() {
+    glClear(GL_COLOR_BUFFER_BIT);
+
+    // Set color to blue
+    glColor3f(0.0, 0.0, 1.0);
+
+    // Begin drawing the rotated triangle
+    glPushMatrix();
+    glTranslatef(0.0f, 0.5f, 0.0f); // Translate to center of square
+    glRotatef(48.0f, 0.0f, 0.0f, 1.0f); // Rotate anticlockwise by 48 degrees
+    glTranslatef(0.0f, -0.5f, 0.0f); // Translate back to original position
+    glBegin(GL_POLYGON);
+    glVertex2f(-3.0, 5.0); // Vertex 1
+    glVertex2f(0.0, -4.0); // Vertex 2
+    glVertex2f(3.0, 7.0);  // Vertex 3
+    glEnd();
+    glPopMatrix();
+
+    glFlush();
+}
+
+void init() {
+    glClearColor(1.0, 1.0, 1.0, 0.0); // Set background color to white
+    gluOrtho2D(-10.0, 10.0, -10.0, 10.0); // Set the viewing area
+}
+
+int main(int argc, char** argv) {
+    glutInit(&argc, argv);
+    glutInitDisplayMode(GLUT_SINGLE | GLUT_RGB);
+    glutInitWindowSize(800, 600); // Set window size
+    glutCreateWindow("Rotated Triangle and Shadow Square");
+    init();
+    glutDisplayFunc(display);
+    glutMainLoop();
+    return 0;
+}
+
+
+(3)
+#include <GL/glut.h>
+#include <cmath>
+
+void display() {
+    glClear(GL_COLOR_BUFFER_BIT);
+
+    // Set color to blue
+    glColor3f(0.0, 0.0, 1.0);
+
+    // Begin drawing the filled square
+    glBegin(GL_POLYGON);
+    glVertex2f(-3.0, 5.0); // Vertex 1
+    glVertex2f(0.0, -4.0); // Vertex 2
+    glVertex2f(3.0, 7.0);  // Vertex 3
+    glEnd();
+
+    // Draw the shadow square in dotted red lines
+    glEnable(GL_LINE_STIPPLE);
+    glLineStipple(1, 0x00FF); // Dotted pattern
+    glColor3f(1.0, 0.0, 0.0); // Red color
+    glBegin(GL_LINE_LOOP);
+    glVertex2f(-3.0, 5.0); // Vertex 1
+    glVertex2f(0.0, 5.0);  // Vertex 2
+    glVertex2f(0.0, 7.0);  // Vertex 3
+    glVertex2f(-3.0, 7.0); // Vertex 4
+    glEnd();
+    glDisable(GL_LINE_STIPPLE);
+
+    glFlush();
+}
+
+void rotateAndDisplay() {
+    glClear(GL_COLOR_BUFFER_BIT);
+
+    // Set color to blue
+    glColor3f(0.0, 0.0, 1.0);
+
+    // Begin drawing the rotated and scaled square
+    glPushMatrix();
+    glTranslatef(0.0f, 0.5f, 0.0f); // Translate to center of square
+    glRotatef(48.0f, 0.0f, 0.0f, 1.0f); // Rotate anticlockwise by 48 degrees
+    glScalef(2.0f, 2.0f, 1.0f); // Scale by a factor of 2
+    glTranslatef(0.0f, -0.5f, 0.0f); // Translate back to original position
+    glBegin(GL_POLYGON);
+    glVertex2f(-3.0, 5.0); // Vertex 1
+    glVertex2f(0.0, -4.0); // Vertex 2
+    glVertex2f(3.0, 7.0);  // Vertex 3
+    glEnd();
+    glPopMatrix();
+
+    glFlush();
+}
+
+void init() {
+    glClearColor(1.0, 1.0, 1.0, 0.0); // Set background color to white
+    gluOrtho2D(-10.0, 10.0, -10.0, 10.0); // Set the viewing area
+}
+
+int main(int argc, char** argv) {
+    glutInit(&argc, argv);
+    glutInitDisplayMode(GLUT_SINGLE | GLUT_RGB);
+    glutInitWindowSize(800, 600); // Set window size
+    glutCreateWindow("Rotated and Scaled Square");
+    init();
+    glutDisplayFunc(rotateAndDisplay); // Change display function to rotateAndDisplay
+    glutMainLoop();
+    return 0;
+}
+
+
+(4)
+#include <GL/glut.h>
+#include <cmath>
+
+void display() {
+    glClear(GL_COLOR_BUFFER_BIT);
+
+    // Set color to blue
+    glColor3f(0.0, 0.0, 1.0);
+
+    // Begin drawing the filled square
+    glBegin(GL_POLYGON);
+    glVertex2f(-3.0, 5.0); // Vertex 1
+    glVertex2f(0.0, -4.0); // Vertex 2
+    glVertex2f(3.0, 7.0);  // Vertex 3
+    glEnd();
+
+    // Draw the shadow square in dotted red lines
+    glEnable(GL_LINE_STIPPLE);
+    glLineStipple(1, 0x00FF); // Dotted pattern
+    glColor3f(1.0, 0.0, 0.0); // Red color
+    glBegin(GL_LINE_LOOP);
+    glVertex2f(-3.0, 5.0); // Vertex 1
+    glVertex2f(0.0, 5.0);  // Vertex 2
+    glVertex2f(0.0, 7.0);  // Vertex 3
+    glVertex2f(-3.0, 7.0); // Vertex 4
+    glEnd();
+    glDisable(GL_LINE_STIPPLE);
+
+    glFlush();
+}
+
+void reflectAndDisplay() {
+    glClear(GL_COLOR_BUFFER_BIT);
+
+    // Set color to blue
+    glColor3f(0.0, 0.0, 1.0);
+
+    // Begin drawing the reflected square
+    glPushMatrix();
+    glScalef(-1.0f, 1.0f, 1.0f); // Reflect across the Y-axis
+    glBegin(GL_POLYGON);
+    glVertex2f(-3.0, 5.0); // Vertex 1
+    glVertex2f(0.0, -4.0); // Vertex 2
+    glVertex2f(3.0, 7.0);  // Vertex 3
+    glEnd();
+    glPopMatrix();
+
+    glFlush();
+}
+
+void init() {
+    glClearColor(1.0, 1.0, 1.0, 0.0); // Set background color to white
+    gluOrtho2D(-10.0, 10.0, -10.0, 10.0); // Set the viewing area
+}
+
+int main(int argc, char** argv) {
+    glutInit(&argc, argv);
+    glutInitDisplayMode(GLUT_SINGLE | GLUT_RGB);
+    glutInitWindowSize(800, 600); // Set window size
+    glutCreateWindow("Reflected Square");
+    init();
+    glutDisplayFunc(reflectAndDisplay); // Change display function to reflectAndDisplay
+    glutMainLoop();
+    return 0;
+}
+
